@@ -28,7 +28,7 @@
     分岐であって、dark を自作しない。
   - class 語彙が `dads-*`（上流忠実）+ `dds-ext-*`（layout 補助）になる。
   - **外部リクエストは scittle だけ**。webfont も画像も引かない。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [jp-go-dds.core :as dds]
             [jp-go-dds.page :as dds-page]
             [shirohan.mockup :as mockup]))
