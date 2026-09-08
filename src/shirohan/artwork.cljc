@@ -41,7 +41,7 @@
 
   「生地の色をそのまま見せる穴」が要るときだけ明示する:
   `id`/`class` に `knockout` を含めるか、`:knockout-fill` にその色を渡す。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.path :as path]
             [shirohan.geom :as geom]))
 
@@ -93,7 +93,7 @@
        (let [v (mapv #(num* % 0.0)
                      (remove str/blank? (str/split (str/trim args) #"[\s,]+")))
              g #(nth v % 0.0)
-             m (case (str/lower-case op)
+             m (case (str/lower op)
                  "matrix" [(g 0) (g 1) (g 2) (g 3) (g 4) (g 5)]
                  "translate" [1.0 0.0 0.0 1.0 (g 0) (if (> (count v) 1) (g 1) 0.0)]
                  "scale" (let [sx (if (seq v) (g 0) 1.0)
@@ -131,7 +131,7 @@
       (str/replace elided-re (fn [m] (str "<" (nth m 1) "-elided/>")))))
 
 (defn- attrs-of [s]
-  (into {} (map (fn [[_ k v1 v2]] [(str/lower-case k) (or v1 v2)])
+  (into {} (map (fn [[_ k v1 v2]] [(str/lower k) (or v1 v2)])
                 (re-seq attr-re (str s)))))
 
 (def ^:private drawable #{"path" "rect" "circle" "ellipse" "polygon" "polyline"})
@@ -166,7 +166,7 @@
       (if-not ms
         {:elements out :unsupported unsup :view-box vb}
         (let [[_ close? raw-tag raw self-slash] (first ms)
-              tag (str/lower-case raw-tag)
+              tag (str/lower raw-tag)
               closing? (seq close?)
               self? (or (= self-slash "/") (contains? void-tags tag))]
           (cond
@@ -268,7 +268,7 @@
   "塗りを `#rrggbb` に正規化する。版に分解できないものは keyword で返す
   （`:none` `:unresolvable`）—— 「とりあえず黒」で誤魔化さない。"
   [fill]
-  (let [f (str/lower-case (str/trim (str (or fill "#000000"))))]
+  (let [f (str/lower (str/trim (str (or fill "#000000"))))]
     (cond
       (str/blank? f) "#000000"
       (= f "none") :none
@@ -309,7 +309,7 @@
         norm (normalize-fill (:fill el))
         ko? (or (and ko-fill (= norm ko-fill))
                 (boolean (re-find #"knockout"
-                                  (str/lower-case (str (get attrs "id") " "
+                                  (str/lower (str (get attrs "id") " "
                                                        (get attrs "class"))))))]
     (cond
       (str/blank? (str d)) {:contours [] :findings []}
@@ -356,7 +356,7 @@
          :or {print-width-mm 280.0 tolerance-mm 0.05 knockout-fill nil}}]
    (let [{:keys [elements unsupported]} (scan svg)
          opts {:tolerance-mm tolerance-mm
-               :ko-fill (some-> knockout-fill str/lower-case str/trim)}
+               :ko-fill (some-> knockout-fill str/lower str/trim)}
          raw (reduce (fn [acc [i el]]
                        (let [{:keys [contours findings]}
                              (element->contours el (assoc opts :shape-id i))]

@@ -26,7 +26,7 @@
   リクエストの**形**を作り、レスポンスを**検証して spec にする**だけの純関数。
   実際に投げるのは host（ブラウザなら `page.cljs` → cloud-itonami の edge
   function）。純関数なので、同じ助言からは必ず同じ spec が出る。"
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (def model-alias
   "fleet main の alias。**具体的な model id を書かない**（ADR-2607173100）。"
@@ -104,7 +104,7 @@
   棄却したものは黙って捨てず必ず返す —— 「AI が決めた」と言われたものが実は
   無視されていた、という状態を作らない。"
   [advice palette]
-  (let [pal (set (map str/lower-case (or palette [])))
+  (let [pal (set (map str/lower (or palette [])))
         rej (atom [])
         rej! (fn [f r] (swap! rej conj {:field f :reason r}) nil)
         colors (let [v (get advice "colors")]
@@ -115,11 +115,11 @@
         ko (let [v (get advice "knockout_fill")]
              (cond (nil? v) nil
                    (not (hex? v)) (rej! :knockout-fill "#rrggbb でない")
-                   (not (contains? pal (str/lower-case v)))
+                   (not (contains? pal (str/lower v)))
                    (rej! :knockout-fill "パレットに無い色は白抜きにできない")
-                   :else (str/lower-case v)))
+                   :else (str/lower v)))
         garment (let [v (get advice "garment_color")]
-                  (if (hex? v) (str/lower-case v) (rej! :garment-color "#rrggbb でない")))
+                  (if (hex? v) (str/lower v) (rej! :garment-color "#rrggbb でない")))
         choke (let [v (get advice "choke_mm")]
                 (cond (not (number? v)) (rej! :choke-mm "数値でない")
                       (not= (double v) (double (clamp v 0.0 0.5)))

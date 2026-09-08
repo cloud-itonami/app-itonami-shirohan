@@ -21,7 +21,7 @@
   viewBox は 400×480 の抽象単位。ボディ身幅（脇から脇）が 240 単位で、これが
   `:body-width-mm`（既定 520mm ＝ メンズ L の平置き身幅あたり）に対応する。
   版はこの比率で縮めて胸位置に置くので、**画面上の大小がそのまま実寸の大小**。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.geom :as geom]
             [shirohan.svg :as ssvg]))
 

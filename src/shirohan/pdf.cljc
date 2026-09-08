@@ -25,7 +25,7 @@
   PDF は原点が左下・y が上。版は左上原点・y が下（SVG と同じ）なので、
   ページ先頭で `1 0 0 -1 0 H cm` を掛けて反転する。単位は pt（1/72 inch）で、
   mm からは 72/25.4 倍。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.geom :as geom]))
 
 (def ^:private mm->pt (/ 72.0 25.4))

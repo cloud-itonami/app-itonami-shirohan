@@ -22,7 +22,7 @@
   に対しては十分小さいのでこれで足りる —— が、**足りない場合を黙って通さない**
   ために `min-feature-width` を用意してあり、`shirohan.plate` はそれで
   `:thin-feature` を報告する。ちゃんとした Straight Skeleton は持っていない。"
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ---------------------------------------------------------------- math
 

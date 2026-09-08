@@ -78,7 +78,7 @@
   `:order` は刷る順。0 が白版で、以降のスポット版は**明るい順**に並べる。
   重ねるほど濃くなる刷りでは、明るい色を先に置いて濃い色を後から重ねるのが
   一般的で、逆にすると濃色の上に明るい色が乗って濁る。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.color :as color]
             [shirohan.cut :as cut]
             [shirohan.geom :as geom]))
@@ -119,7 +119,7 @@
     (/ (+ (* 0.2126 r) (* 0.7152 g) (* 0.0722 b)) 255.0)))
 
 (defn- label-for [hex]
-  (str "スポット版 " (str/upper-case (str hex))))
+  (str "スポット版 " (str/upper (str hex))))
 
 ;; ---------------------------------------------------------------- QC
 
@@ -239,7 +239,7 @@
          ;; 刷るので残す。
          spots (->> (group-by :fill arts)
                     (remove (fn [[fill _]]
-                              (and white (= (str/lower-case (str fill)) "#ffffff"))))
+                              (and white (= (str/lower (str fill)) "#ffffff"))))
                     (map (fn [[fill group]]
                            {:id (keyword (str "spot" (str/replace (str fill) "#" "")))
                             :label (label-for fill)

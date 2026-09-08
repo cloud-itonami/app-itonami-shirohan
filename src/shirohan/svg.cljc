@@ -19,7 +19,7 @@
   すべての版が**同じ原点・同じ寸法**を持ち、四隅に同じマークが入る。刷る側は
   これを重ねて見当を出す。マークは版の内容ではないので、`:registration? false`
   で落とせる。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.geom :as geom]))
 
 (def ^:private fmt geom/fmt)

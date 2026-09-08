@@ -22,7 +22,7 @@
   誤差は**必ず内側に入る**わけではない（弦は曲線の内側を通るので、凸部では
   面が痩せる）。既定 0.05mm は choke の下限 0.1mm の半分で、版ずれ許容
   ±0.5mm に対しては十分に小さい。"
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- sqrt [x] #?(:clj (Math/sqrt (double x)) :cljs (js/Math.sqrt x)))
 (defn- sin [x] #?(:clj (Math/sin (double x)) :cljs (js/Math.sin x)))
@@ -162,7 +162,7 @@
                    rel? (contains? #{"m" "l" "h" "v" "c" "s" "q" "t" "a"} cmd)
                    ax (fn [v] (if rel? (+ px v) v))
                    ay (fn [v] (if rel? (+ py v) v))]
-               (case (str/upper-case (or cmd "L"))
+               (case (str/upper (or cmd "L"))
                  "M" (let [x (ax (n 0)) y (ay (n 1))]
                        (recur (+ i 2)
                               ;; M の後に続く数は暗黙の L（m なら l）

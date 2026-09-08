@@ -14,7 +14,7 @@
   `plan` は**純関数**。同じ SVG と同じ spec からは必ず同じ版が出るので、
   版下を差分でレビューできるし、承認した版と刷った版が同じであることを
   ハッシュで示せる。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.artwork :as artwork]
             [shirohan.geom :as geom]
             [shirohan.mockup :as mockup]
@@ -80,7 +80,7 @@
                   (raster/trace image {:colors (:colors spec)
                                        :alpha-min (get spec :alpha-min 128)})
                   {:contours [] :silhouette [] :findings [] :palette []})
-         ko (some-> (:knockout-fill spec) str/lower-case)
+         ko (some-> (:knockout-fill spec) str/lower)
          tagged (mapv #(assoc % :role (if (and ko (= ko (:fill %))) :knockout :art))
                       (:contours traced))
          ;; **白版のもとは常に専用経路で追う。** 色版を作るかどうかと独立

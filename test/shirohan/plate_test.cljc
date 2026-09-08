@@ -1,6 +1,6 @@
 (ns shirohan.plate-test
   (:require [clojure.test :refer [deftest is testing]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [shirohan.geom :as geom]
             [shirohan.plate :as plate]
             [shirohan.svg :as svg]
