@@ -26,7 +26,7 @@
   `:px-per-mm` 既定 6（≒150dpi）。刷り位置の確認には十分で、A3 相当でも
   4M 画素に収まる。上げると画素数の 2 乗で重くなるので `:max-pixels` で頭打ちに
   し、超えたら**黙って縮めず所見を返す**。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [shirohan.geom :as geom]))
 
 ;; ---------------------------------------------------------------- バイト書き

@@ -30,7 +30,7 @@
   やり方。ここで CMYK を出すのは、入稿先が Illustrator の `cmyk` レイヤーを
   期待する場合に**そのまま置ける値**を持たせるためで、版の分解自体は
   `shirohan.plate` のスポットカラー分解が正本。"
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- hex->rgb01 [hex]
   (let [h (str/replace (str hex) "#" "")
