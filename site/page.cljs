@@ -15,7 +15,7 @@
             [shirohan.mockup :as mockup]
             [shirohan.raster :as raster]
             [shirohan.svg :as svg]
-            [clojure.string :as str]))
+            [kotoba.lang.text :as str]))
 
 (defn- el [id] (.getElementById js/document id))
 (defn- val-of [id] (some-> (el id) .-value))
@@ -264,7 +264,7 @@
 
 (defn- read-file! [file]
   (let [svg? (or (= "image/svg+xml" (.-type file))
-                 (str/ends-with? (str/lower-case (.-name file)) ".svg"))
+                 (str/ends-with? (str/lower (.-name file)) ".svg"))
         r (js/FileReader.)]
     (set! (.-onload r)
           (fn [_]
