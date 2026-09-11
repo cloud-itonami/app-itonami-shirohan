@@ -143,7 +143,7 @@ LLM もネットワークも使わない決定論的な純関数で行う。
 
 ```bash
 clojure -M:test                                  # JVM テストハーネス（67 tests / 145 assertions）
-npx nbb --classpath src scripts/smoke.cljs       # SCI（nbb / scittle）で動くことの確認
+npx nbb --classpath src scripts/smoke.cljk       # SCI（nbb / scittle）で動くことの確認
 ```
 
 ## ライセンス
