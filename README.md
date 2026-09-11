@@ -142,8 +142,8 @@ LLM もネットワークも使わない決定論的な純関数で行う。
 （JavaScript の `RegExp` に無く、書いた瞬間にブラウザで死ぬ）—— これはテストで強制する。
 
 ```bash
-clojure -M:test                                  # JVM テストハーネス（67 tests / 145 assertions）
-npx nbb --classpath src scripts/smoke.cljk       # SCI（nbb / scittle）で動くことの確認
+kbb -M:test                                  # JVM テストハーネス（67 tests / 145 assertions）
+kbb --backend sci --classpath src scripts/smoke.cljk       # SCI（nbb / scittle）で動くことの確認
 ```
 
 ## ライセンス
