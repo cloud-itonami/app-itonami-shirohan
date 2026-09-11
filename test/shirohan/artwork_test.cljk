@@ -171,9 +171,9 @@
 
 (deftest no-inline-regex-flags-in-source
   (testing "(?s) / (?i) は JS の RegExp に無い —— ブラウザで読めなくなる"
-    (doseq [f ["src/shirohan/geom.cljc" "src/shirohan/path.cljc"
-               "src/shirohan/artwork.cljc" "src/shirohan/plate.cljc"
-               "src/shirohan/svg.cljc" "src/shirohan/core.cljc"]]
+    (doseq [f ["src/shirohan/geom.cljk" "src/shirohan/path.cljk"
+               "src/shirohan/artwork.cljk" "src/shirohan/plate.cljk"
+               "src/shirohan/svg.cljk" "src/shirohan/core.cljk"]]
       #?(:clj (let [src (slurp f)]
                 ;; 正規表現リテラルの中だけを見る（docstring での言及は対象外）
                 (is (not (re-find #"#\"[^\"]*\(\?[sim]\)" src))

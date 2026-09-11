@@ -26,7 +26,7 @@
                         {:local/root "../../kotoba-lang/org-iso-pdf"}}
            :main-opts ["-m" "cognitect.test-runner" "-d" "verify"]}
 
-  ;; 公開サイトのマークアップ（site/shirohan/page.cljc）。design system を引くので
+  ;; 公開サイトのマークアップ（site/shirohan/page.cljk）。design system を引くので
   ;; ライブラリ本体の :paths からは外してある —— shirohan.{geom,path,artwork,plate,svg}
   ;; は clojure.string しか引かない状態を保つ（ブラウザで scittle がそのまま読む）。
   :site {:extra-paths ["site"]
