@@ -8,8 +8,8 @@
   - `kasane`（`resources/kasane/grammar/psd.edn` + `kasane.decode`）—— PSD
   - `org-iso-pdf`（`pdf.core/parse`）—— PDF
 
-  この ns は `test/` ではなく `verify/` にある。`clojure -M:test` は依存ゼロで
-  回る本体テストだけを見て、こちらは `clojure -M:verify` で回す —— 検証のために
+  この ns は `test/` ではなく `verify/` にある。`kbb -M:test` は依存ゼロで
+  回る本体テストだけを見て、こちらは `kbb -M:verify` で回す —— 検証のために
   ライブラリ本体へ依存が忍び込むのを構造で防ぐ。"
   (:require [clojure.test :refer [deftest is testing]]
             [clojure.java.io :as io]
