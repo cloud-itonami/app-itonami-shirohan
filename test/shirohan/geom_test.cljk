@@ -1,5 +1,5 @@
 (ns shirohan.geom-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [shirohan.geom :as geom]))
 
 (defn- abs* [x] #?(:clj (Math/abs (double x)) :cljs (js/Math.abs x)))

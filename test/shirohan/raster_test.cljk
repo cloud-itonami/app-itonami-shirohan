@@ -1,5 +1,5 @@
 (ns shirohan.raster-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [kotoba.lang.text :as str]
             [shirohan.geom :as geom]
             [shirohan.curve :as curve]
