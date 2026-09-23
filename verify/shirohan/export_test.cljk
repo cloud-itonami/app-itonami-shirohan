@@ -11,7 +11,7 @@
   この ns は `test/` ではなく `verify/` にある。`kbb -M:test` は依存ゼロで
   回る本体テストだけを見て、こちらは `kbb -M:verify` で回す —— 検証のために
   ライブラリ本体へ依存が忍び込むのを構造で防ぐ。"
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [clojure.java.io :as io]
             [kasane.decode :as kd]
             [pdf.core :as pdf-reader]
