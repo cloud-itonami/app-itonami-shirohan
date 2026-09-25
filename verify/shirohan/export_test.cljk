@@ -12,7 +12,7 @@
   回る本体テストだけを見て、こちらは `kbb -M:verify` で回す —— 検証のために
   ライブラリ本体へ依存が忍び込むのを構造で防ぐ。"
   (:require [kotoba.test :refer [deftest is testing]]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [kasane.decode :as kd]
             [pdf.core :as pdf-reader]
             [shirohan.core :as shirohan])
